@@ -3,9 +3,18 @@ if(isset($_POST['dni']) && !empty($_POST['dni'])){
     $register = TimeOverController:: TimeRegister();
 
     if($register == 'ok'){
-        echo '<div class="alert alert-success" id="success-alert">
-        <strong>Success! </strong> Product have added to your wishlist.
-      </div>';
+        echo '<script>
+                    if(window.history.replaceState){
+                        window.history.repaceState(null,null,window.location.href);
+                    }
+                </script>';
+        echo " <div class='alert alert-success'>Registro Exitoso</div>
+            <script>
+                setTimeout(function(){
+                    window.location = 'index.php';
+                },1000);
+            </script>
+        ";
     }
 }
 ?>
