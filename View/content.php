@@ -41,7 +41,7 @@ if(isset($_POST['dni']) && !empty($_POST['dni'])){
                                 <input type="text" class="text-center fw-bold form-control border-1 text-secondary shadow-none" name="dni" value="" autofocus maxlength="8" required>
                             </div>
                             <div class="mt-3">
-                                <button type="submit" class="form-control btn btn-danger btn-lg text-uppercase" id="">Registrar <i class="fas fa-alarm-clock"></i></button>
+                                <button type="submit" class="form-control btn btn-success btn-lg text-uppercase" id="">Registrar <i class="fas fa-alarm-clock"></i></button>
                             </div>
                         </div>
                     </div>
