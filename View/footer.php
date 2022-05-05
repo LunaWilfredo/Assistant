@@ -1,6 +1,6 @@
         <footer class="fw-bold p-3 d-flex justify-content-end">
             <div class="px-2">
-                Design by WLuna & <img src="Layout/Img/logo.jpg" alt="" class="img-thumbnail border-0" width="30" height="30"> Laboratorios Yermedic S.A.C &copy; 2022
+                Design by UPN Group 4 & <img src="Layout/Img/logo.jpg" alt="" class="img-thumbnail border-0" width="30" height="30"> Laboratorios Yermedic S.A.C &copy; 2022
             </div>
         </footer>
     </div>
