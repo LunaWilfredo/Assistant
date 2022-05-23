@@ -1,8 +1,8 @@
 <?php 
-if(isset($_POST['dni']) && !empty($_POST['dni'])){
+if(isset($_POST['doc']) && !empty($_POST['doc'])){
     $register = TimeOverController:: TimeRegister();
 
-    if($register == 'ok'){
+    if($register = 'ok'){
         echo '<script>
                     if(window.history.replaceState){
                         window.history.repaceState(null,null,window.location.href);
@@ -38,7 +38,7 @@ if(isset($_POST['dni']) && !empty($_POST['dni'])){
                                 <label for="dni" class="form-label text-dark  h1 text-uppercase my-3">Ingrese su Doc.Identidad:</label>
                             </div>
                             <div class="">
-                                <input type="text" class="text-center fw-bold form-control border-1 text-secondary shadow-none" name="dni" value="" autofocus maxlength="8" required>
+                                <input type="text" class="text-center fw-bold form-control border-1 text-secondary shadow-none" name="doc" value="" autofocus maxlength="8" required>
                             </div>
                             <div class="mt-3">
                                 <button type="submit" class="form-control btn btn-success btn-lg text-uppercase" id="">Registrar <i class="fas fa-alarm-clock"></i></button>

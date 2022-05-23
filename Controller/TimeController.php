@@ -5,13 +5,12 @@ require_once 'Model/TimeModel.php';
 class TimeOverController{
 
     static public function TimeRegister(){
-        if(isset($_POST['dni']) && !empty($_POST['dni'])){
+        if(isset($_POST['doc']) && !empty($_POST['doc'])){
 
-            $table = 'asistencias';
+            $table ="asistencias";
             $datos = array(
-                "dni"=>$_POST['dni']
+                "doc"=>$_POST['doc']
             );
-
             $answer = TimeOverModel::TimeRegister($table,$datos);
             return $answer;
         }

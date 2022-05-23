@@ -4,11 +4,13 @@ require_once 'BD/DataBase.php';
 
 class TimeOverModel{
     static public function TimeRegister($table,$datos){
-        $sql="INSERT INTO $table (dni,fecha,hora) VALUES(:dni,CURDATE(),CURTIME())";
+        $sql="INSERT INTO $table( doc,fecha,hora) VALUES (:doc,curdate(),curtime())";
 
-        $conexion = Conexion::conectar()->prepare($sql);
-        $conexion->bindParam(":dni",$datos['dni'],PDO::PARAM_STR);
-        if($conexion->execute()){
+        $cn=Conexion::conectar()->prepare($sql);
+
+        $cn->bindParam(':doc',$datos['doc'],PDO::PARAM_STR);
+
+        if($cn->exec()){
             return 'ok';
         }else{
             print_r(Conexion::conectar()->errorInfo());
