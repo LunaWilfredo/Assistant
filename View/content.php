@@ -17,11 +17,42 @@ if(isset($_POST['doc']) && !empty($_POST['doc'])){
         }
 
         if($documento == $documentoB){
-            echo ' <div class="container">
-                    <div class="alert alert-success text-center mt-5 rounded" role="alert">
-                        Asistencia Registrada '.'['.$hora.']'." ".STRTOUPPER($nombre).'
+            if($hora <= $ingresoB){
+                $msg = "Ingreso Registrado Correctamente";
+            }else if($hora == $ingresoB){
+                $msg = "Ingreso Registrado Correctamente";
+            }else if($hora > $ingresoB){
+                $msg = "Ingreso Registrado Correctamente";
+            }else if($hora == $salidaB && $hora != $ingresoB){
+                $msg = "Salida Registrada Correctamente";
+            }else if($hora >= $salidaB && $hora != $ingresoB){
+                $msg = "Salida Registrada Correctamente";
+            }
+            
+            // echo ' <div class="container">
+            //         <div class="alert alert-success text-center mt-5 rounded" role="alert">
+            //             Asistencia Registrada '.'['.$hora.']'.'['.$msg.']'." ".STRTOUPPER($nombre).'
+            //         </div>
+            //     </div>' ;
+        }
+        $register = TimeOverController:: TimeRegister();
+        if($register = 'ok'){
+        echo '<script>
+                    if(window.history.replaceState){
+                        window.history.repaceState(null,null,window.location.href);
+                    }
+                </script>';
+        echo " 
+            <div class='container'>
+                    <div class='alert alert-success text-center mt-5 rounded' role='alert'>
+                        Asistencia Registrada "."['.$hora.']"."['.$msg.']"." ".STRTOUPPER($nombre)."
                     </div>
-                </div>' ;
+                </div>'
+            <script>
+                setTimeout(function(){
+                    window.location = 'index.php';
+                },1000);
+            </script>";
         }
     }else{
         echo '
@@ -33,22 +64,9 @@ if(isset($_POST['doc']) && !empty($_POST['doc'])){
 
     }
 
-   // $register = TimeOverController:: TimeRegister();
+   
 
-   // if($register = 'ok'){
-      /*  echo '<script>
-                    if(window.history.replaceState){
-                        window.history.repaceState(null,null,window.location.href);
-                    }
-                </script>';
-        echo " <div class='alert alert-success'>Registro Exitoso</div>
-            <script>
-                setTimeout(function(){
-                    window.location = 'index.php';
-                },1000);
-            </script>
-        ";*/
-    //}
+   
 }
 ?>
 <form action="" method="post">
