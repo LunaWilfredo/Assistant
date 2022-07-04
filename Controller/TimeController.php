@@ -10,15 +10,20 @@ class TimeOverController{
         return $respuesta;
     }
 
-    static public function TimeRegister(){
-        if(isset($_POST['doc']) && !empty($_POST['doc'])){
+    static public function TimeRegister($id){
+        if(isset($_POST['entrada'])){
             $table ="asistencias";
-            $datos = array(
-                "doc"=>$_POST['doc']
-            );
-            $answer = TimeOverModel::TimeRegister($table,$datos);
+            $answer = TimeOverModel::TimeRegisterE($table,$id);
             return $answer;
+        }else if(isset($_POST['salida'])){
+
         }
+    }
+
+    static public function horarioM($doc){
+        $table = "asistencias";
+        $respuesta = TimeOverModel::horarioM($table,$doc);
+        return $respuesta;
     }
 
     
