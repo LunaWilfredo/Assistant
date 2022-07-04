@@ -16,7 +16,9 @@ class TimeOverController{
             $answer = TimeOverModel::TimeRegisterE($table,$id);
             return $answer;
         }else if(isset($_POST['salida'])){
-
+            $table ="asistencias";
+            $answer = TimeOverModel::TimeRegisterS($table,$id);
+            return $answer;
         }
     }
 

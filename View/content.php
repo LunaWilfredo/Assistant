@@ -70,11 +70,14 @@ else if(isset($_POST['doc']) && !empty($_POST['doc']) && isset($_POST['salida'])
             $ingresoB=$prev['ingreso'];
             $salidaB=$prev['salida'];
             $estado=$prev['estado'];
-        }
-        
-        echo 'usuario existe';
+        }      
+        //echo 'usuario existe';
     }else{
-        echo 'usuario no existe';
+        echo '<div class="container">
+                <div class="alert alert-danger text-center" role="alert">
+                    Personal NO registrado en sistema!
+                </div>
+            </div>';
     }
 
     if($entrada = 1 && $entrada != NULL)
@@ -95,54 +98,50 @@ else if(isset($_POST['doc']) && !empty($_POST['doc']) && isset($_POST['salida'])
 
         if($fechaM == $fecha && $entradaM = 1){
             echo 'entrada marcada';
-        //     // $hsalida8=STRTOTIME('+8 hours',STRTOTIME($entradaM));
-        //     // $hsalida=date('H:i',$hsalida8);
-        //     // if($hora >= $salidaB || $hora >= $hsalida){
-        //     //     echo 'salida realizada'." ".$hsalida;;
-        //     // }else{
-        //     //     echo '8 hora no cumplidas'." ".$hsalida;
-        //     // }
+          $hsalida8=STRTOTIME('+8 hours',STRTOTIME($entradaM));
+          $hsalida=date('H:i',$hsalida8);
+          if($hora >= $salidaB || $hora >= $hsalida){
+                $register = TimeOverController:: TimeRegister($id);
+                
+                if($register = 'ok')
+                {
+                    echo '<script>
+                    if(window.history.replaceState){
+                        window.history.repaceState(null,null,window.location.href);
+                    }
+                    </script>';
+                    echo " 
+                    <div class='container'>
+                        <div class='alert alert-success text-center mt-5 rounded' role='alert'>
+                             Asistencia Registrada "."['.$hora.']"."['.$msg.']"." ".STRTOUPPER($nombre)."
+                         </div>
+                    </div>'
+                    <script>
+                        setTimeout(function(){
+                            window.location = 'index.php';
+                        },1000);
+                    </script>";
+                }
+          }else{
+            echo '<div class="container">
+                <div class="alert alert-danger text-center" role="alert">
+                    8H no cumpletas
+                </div>
+            </div>';
+          }
         }
     }
     else
     {
-        echo 'No marco entrada';
+        echo '<div class="container">
+                <div class="alert alert-danger text-center" role="alert">
+                    No marco entrada
+                </div>
+            </div>';
+        echo '';
     }
-
-            
-    
-            //$register = TimeOverController:: TimeRegister($id);
-    
-           /* if($register = 'ok')
-            {
-            echo '<script>
-                        if(window.history.replaceState){
-                            window.history.repaceState(null,null,window.location.href);
-                       }
-                    </script>';
-             echo " 
-                 <div class='container'>
-                         <div class='alert alert-success text-center mt-5 rounded' role='alert'>
-                             Asistencia Registrada "."['.$hora.']"."['.$msg.']"." ".STRTOUPPER($nombre)."
-                         </div>
-                 </div>'
-                 <script>
-                     setTimeout(function(){
-                         window.location = 'index.php';
-                     },1000);
-                 </script>";
-            }*/
-    
      
 }
- //else{
-//     echo '
-//     <div class="container">
-//         <div class="alert alert-danger text-center" role="alert">
-//             Personal NO registrado en sistema!
-//         </div>
-//     </div>';
-// } 
 ?>
 <form action="" method="post">
     <div class="container mt-5">
